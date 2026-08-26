@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagens | Projeto Web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="chat.html" class="nav-link active">Mensagens</a>
+  </nav>
+
+  <main class="welcome-container">
+    <div class="card chat-card">
+      <div class="chat-header">
+        <h2>Chat Interativo</h2>
+        <span class="status">● Online</span>
+      </div>
+
+      <div id="chat-box" class="chat-box">
+        <div class="message system">
+          <p>Sistema pronto. Envie uma mensagem!</p>
+        </div>
+      </div>
+
+      <form id="chat-form">
+        <input type="text" id="chat-input" placeholder="Digite sua mensagem..." required autocomplete="off">
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

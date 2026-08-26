@@ -1,0 +1,203 @@
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --primary: #38bdf8;
+  --primary-hover: #0284c7;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.welcome-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+}
+
+p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+input {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: var(--text-main);
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--primary);
+}
+
+button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--primary);
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+  color: #fff;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid #334155;
+  margin-top: 1rem;
+}
+
+.secondary-btn:hover {
+  background-color: #334155;
+  color: var(--text-main);
+}
+
+.hidden {
+  display: none;
+}
+/* Navegação */
+.navbar {
+  position: absolute;
+  top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-main);
+  background-color: var(--card-bg);
+}
+
+/* Estrutura do Chat */
+.chat-card {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.status {
+  color: #22c55e;
+  font-size: 0.8rem;
+}
+
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Balões de Mensagem */
+.message {
+  max-width: 80%;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: var(--primary);
+  color: #0f172a;
+  border-bottom-right-radius: 2px;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background-color: #334155;
+  color: var(--text-main);
+  border-bottom-left-radius: 2px;
+}
+
+.message.system {
+  align-self: center;
+  background-color: transparent;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+#chat-form {
+  flex-direction: row;
+}
+
+#chat-form input {
+  flex: 1;
+}
