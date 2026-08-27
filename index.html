@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard | Projeto Web</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=50">
 </head>
 <body>
   <div class="app-layout">
@@ -24,11 +24,7 @@
           <span class="status">● Online</span>
         </div>
 
-        <div id="chat-box" class="chat-box">
-          <div class="message system">
-            <p>Sessão iniciada. Envie suas mensagens abaixo.</p>
-          </div>
-        </div>
+        <div id="chat-box" class="chat-box"></div>
 
         <form id="chat-form">
           <input type="text" id="chat-input" placeholder="Digite sua mensagem..." required autocomplete="off">
@@ -36,7 +32,7 @@
         </form>
       </section>
 
-      <!-- Painel Lateral / Widgets -->
+      <!-- Painel Lateral -->
       <aside class="dashboard-sidebar">
         <div class="card widget-card">
           <h4>Perfil</h4>
@@ -51,17 +47,10 @@
             <button class="action-btn" id="clear-chat-btn">Limpar Chat</button>
           </div>
         </div>
-
-        <div class="card widget-card">
-          <h4>Estatísticas</h4>
-          <ul class="stats-list">
-            <li>Mensagens enviadas: <strong id="msg-count">0</strong></li>
-          </ul>
-        </div>
       </aside>
     </main>
   </div>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=50" defer></script>
 </body>
 </html>
