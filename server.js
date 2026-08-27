@@ -28,7 +28,7 @@ const initDb = async () => {
         id SERIAL PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
         content TEXT NOT NULL,
-        sender VARCHAR(50) NOT NULL
+        sender VARCHAR(255) NOT NULL
       );
     `);
     console.log('Tabelas sincronizadas no PostgreSQL.');
@@ -81,12 +81,20 @@ app.get('/api/messages', async (req, res) => {
 
 app.post('/api/messages', async (req, res) => {
   const { username, content, sender } = req.body;
+  
+  if (!username || !content) {
+    return res.status(400).json({ error: 'Nome de usuário e conteúdo são obrigatórios.' });
+  }
+
+  const msgSender = sender || username;
+
   try {
+    // Salva APENAS a mensagem real do usuário
     const result = await pool.query(
       'INSERT INTO messages (username, content, sender) VALUES ($1, $2, $3) RETURNING id',
-      [username, content, sender]
+      [username, content, msgSender]
     );
-    res.status(201).json({ id: result.rows[0].id, username, content, sender });
+    res.status(201).json({ id: result.rows[0].id, username, content, sender: msgSender });
   } catch (err) {
     res.status(500).json({ error: 'Erro ao salvar mensagem.' });
   }
