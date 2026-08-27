@@ -3,31 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boas-Vindas | Projeto Web</title>
+  <title>Dashboard | Projeto Web</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="welcome-container">
-    <div class="card">
-      <span class="badge">GRUPO ESTRUPADOR DE PAU</span>
-      <h1 id="greeting">Seja bem-vindo!</h1>
-      <p>Digite seu nome para personalizar seu ambiente de aprendizado.</p>
-
-      <form id="welcome-form">
-        <input type="text" id="username" placeholder="Digite seu nome..." required autocomplete="off">
-        <button type="submit">Entrar</button>
-      </form>
-
-      <div id="user-display" class="hidden">
-        <p>Olá, <strong id="name-output"></strong>! O ambiente está pronto.</p>
-        <button id="reset-btn" class="secondary-btn">Trocar Nome</button>
+  <div class="app-layout">
+    <header class="app-header">
+      <div class="logo">⚡ WebApp</div>
+      <div class="user-info">
+        <span>Olá, <strong id="header-username">Usuário</strong>!</span>
+        <button id="logout-btn" class="logout-btn">Sair</button>
       </div>
-    </div>
-    <nav class="navbar">
-  <a href="index.html" class="nav-link active">Home</a>
-  <a href="chat.html" class="nav-link">Mensagens</a>
-</nav>
-  </main>
+    </header>
+
+    <main class="dashboard-container">
+      <!-- Chat Integrado -->
+      <section class="card chat-card-integrated">
+        <div class="card-header">
+          <h3>Central de Mensagens</h3>
+          <span class="status">● Online</span>
+        </div>
+
+        <div id="chat-box" class="chat-box">
+          <div class="message system">
+            <p>Sessão iniciada. Envie suas mensagens abaixo.</p>
+          </div>
+        </div>
+
+        <form id="chat-form">
+          <input type="text" id="chat-input" placeholder="Digite sua mensagem..." required autocomplete="off">
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+
+      <!-- Painel Lateral / Widgets -->
+      <aside class="dashboard-sidebar">
+        <div class="card widget-card">
+          <h4>Perfil</h4>
+          <div class="profile-avatar" id="avatar-initials">U</div>
+          <p class="profile-name" id="profile-username">Carregando...</p>
+          <span class="badge">Membro Ativo</span>
+        </div>
+
+        <div class="card widget-card">
+          <h4>Ações Rápidas</h4>
+          <div class="action-buttons">
+            <button class="action-btn" id="clear-chat-btn">Limpar Chat</button>
+          </div>
+        </div>
+
+        <div class="card widget-card">
+          <h4>Estatísticas</h4>
+          <ul class="stats-list">
+            <li>Mensagens enviadas: <strong id="msg-count">0</strong></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+  </div>
 
   <script src="script.js" defer></script>
 </body>

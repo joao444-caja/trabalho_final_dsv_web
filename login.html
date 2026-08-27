@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso | Projeto Web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="welcome-container">
+    <div class="card">
+      <div class="auth-tabs">
+        <button id="tab-login" class="tab-btn active">Entrar</button>
+        <button id="tab-register" class="tab-btn">Cadastrar</button>
+      </div>
+
+      <form id="login-form">
+        <input type="text" id="login-user" placeholder="Usuário" required autocomplete="off">
+        <input type="password" id="login-pass" placeholder="Senha" required>
+        <button type="submit">Acessar</button>
+      </form>
+
+      <form id="register-form" class="hidden">
+        <input type="text" id="reg-user" placeholder="Novo Usuário" required autocomplete="off">
+        <input type="password" id="reg-pass" placeholder="Nova Senha" required>
+        <button type="submit">Criar Conta</button>
+      </form>
+
+      <p id="auth-msg" class="auth-msg"></p>
+    </div>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>
