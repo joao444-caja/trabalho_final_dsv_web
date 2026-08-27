@@ -17,14 +17,110 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 2rem 1rem;
+  align-items: center;
+  padding: 1rem;
 }
 
-/* Layout Geral */
+/* Auth Layout */
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 100%;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.auth-tabs {
+  display: flex;
+  background-color: #0f172a;
+  padding: 4px;
+  border-radius: 8px;
+  gap: 4px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.6rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+.auth-form {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form.active {
+  display: flex;
+}
+
+.auth-form h2 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: var(--text-main);
+  outline: none;
+}
+
+.auth-form input:focus {
+  border-color: var(--primary);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--primary);
+  color: #0f172a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.auth-message {
+  text-align: center;
+  font-size: 0.85rem;
+  min-height: 1.2rem;
+}
+
+.auth-message.error { color: #f87171; }
+.auth-message.success { color: #4ade80; }
+
+/* Dashboard Layout */
 .app-layout {
   width: 100%;
   max-width: 1000px;
@@ -40,26 +136,9 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.logo {
-  font-weight: 700;
-  color: var(--primary);
-  font-size: 1.2rem;
-}
+.logo { font-weight: 700; color: var(--primary); font-size: 1.2rem; }
+.user-info { display: flex; align-items: center; gap: 1rem; }
 
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.welcome-container {
-  width: 100%;
-  max-width: 450px;
-  padding: 1rem;
-  margin: auto;
-}
-
-/* Grid do Dashboard (O que estava faltando!) */
 .dashboard-container {
   display: grid;
   grid-template-columns: 1fr 280px;
@@ -68,12 +147,9 @@ body {
 }
 
 @media (max-width: 768px) {
-  .dashboard-container {
-    grid-template-columns: 1fr;
-  }
+  .dashboard-container { grid-template-columns: 1fr; }
 }
 
-/* Cards */
 .card {
   background-color: var(--card-bg);
   padding: 1.5rem;
@@ -81,28 +157,11 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-.chat-card-integrated, .chat-card {
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-}
+.chat-card-integrated { height: 500px; display: flex; flex-direction: column; }
+.card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 0.75rem; margin-bottom: 1rem; }
+.status { color: #22c55e; font-size: 0.8rem; }
 
-.card-header, .chat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #334155;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.status {
-  color: #22c55e;
-  font-size: 0.8rem;
-}
-
-/* Container de Mensagens (Chat) */
-#chat-box, .chat-box {
+#chat-box {
   flex: 1;
   display: flex !important;
   flex-direction: column !important;
@@ -112,7 +171,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Balões de Mensagem (DM Instagram) */
 .message {
   max-width: 75%;
   padding: 10px 14px;
@@ -122,7 +180,6 @@ body {
   word-wrap: break-word;
 }
 
-/* Sua Mensagem -> DIREITA (Azul) */
 .message.sent {
   align-self: flex-end !important;
   background-color: #0084ff !important;
@@ -130,7 +187,6 @@ body {
   border-bottom-right-radius: 2px !important;
 }
 
-/* Outro Usuário -> ESQUERDA (Cinza) */
 .message.received {
   align-self: flex-start !important;
   background-color: #334155 !important;
@@ -138,103 +194,16 @@ body {
   border-bottom-left-radius: 2px !important;
 }
 
-.sender-name {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: var(--primary);
-  margin-bottom: 2px;
-}
+.sender-name { display: block; font-size: 0.75rem; font-weight: bold; color: var(--primary); margin-bottom: 2px; }
 
-/* Inputs e Botões */
-#chat-form {
-  display: flex;
-  gap: 0.5rem;
-}
+#chat-form { display: flex; gap: 0.5rem; }
+#chat-form input { flex: 1; padding: 0.75rem 1rem; border-radius: 6px; border: 1px solid #334155; background-color: #0f172a; color: var(--text-main); }
+#chat-form button { padding: 0.75rem 1.2rem; border: none; border-radius: 6px; background-color: var(--primary); color: #0f172a; font-weight: 600; cursor: pointer; }
 
-#chat-form input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #334155;
-  background-color: #0f172a;
-  color: var(--text-main);
-}
-
-#chat-form button, button[type="submit"] {
-  padding: 0.75rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--primary);
-  color: #0f172a;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* Lateral (Sidebar) e Perfil */
-.dashboard-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.widget-card h4 {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-}
-
-.profile-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: var(--primary);
-  color: #0f172a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  margin: 0 auto 0.5rem;
-}
-
-.profile-name {
-  text-align: center;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.badge {
-  display: block;
-  text-align: center;
-  font-size: 0.7rem;
-  color: var(--primary);
-  font-weight: bold;
-}
-
-.action-btn {
-  width: 100%;
-  background-color: #0f172a;
-  border: 1px solid #334155;
-  color: var(--text-main);
-  padding: 0.6rem;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.action-btn:hover {
-  background-color: #1e293b;
-}
-
-.logout-btn {
-  background: transparent;
-  color: #f87171;
-  border: 1px solid #f87171;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background-color: rgba(248, 113, 113, 0.1);
-}
+.dashboard-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+.widget-card h4 { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; }
+.profile-avatar { width: 48px; height: 48px; border-radius: 50%; background-color: var(--primary); color: #0f172a; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 0.5rem; }
+.profile-name { text-align: center; font-weight: 600; margin-bottom: 0.5rem; }
+.badge { display: block; text-align: center; font-size: 0.7rem; color: var(--primary); font-weight: bold; }
+.action-btn { width: 100%; background-color: #0f172a; border: 1px solid #334155; color: var(--text-main); padding: 0.6rem; border-radius: 6px; cursor: pointer; }
+.logout-btn { background: transparent; color: #f87171; border: 1px solid #f87171; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; }

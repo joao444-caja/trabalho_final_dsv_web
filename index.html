@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebApp | Chat & Login</title>
-  <link rel="stylesheet" href="style.css?v=200">
+  <title>WebApp</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- TELA DE LOGIN / CADASTRO -->
-  <div id="auth-screen" class="welcome-container">
-    <div class="card auth-card">
+  <!-- Tela de Auth (Login e Cadastro) -->
+  <div id="auth-screen" class="auth-container">
+    <div class="auth-card">
       <div class="auth-tabs">
         <button id="tab-login" class="tab-btn active" type="button">Entrar</button>
         <button id="tab-register" class="tab-btn" type="button">Cadastrar</button>
@@ -18,23 +18,15 @@
 
       <form id="login-form" class="auth-form active">
         <h2>Entrar na Conta</h2>
-        <div class="form-group">
-          <input type="text" id="login-user" placeholder="Usuário" required autocomplete="off">
-        </div>
-        <div class="form-group">
-          <input type="password" id="login-pass" placeholder="Senha" required>
-        </div>
+        <input type="text" id="login-user" placeholder="Usuário" required autocomplete="off">
+        <input type="password" id="login-pass" placeholder="Senha" required>
         <button type="submit" class="btn-primary">Acessar</button>
       </form>
 
       <form id="register-form" class="auth-form">
         <h2>Criar Conta</h2>
-        <div class="form-group">
-          <input type="text" id="reg-user" placeholder="Novo Usuário" required autocomplete="off">
-        </div>
-        <div class="form-group">
-          <input type="password" id="reg-pass" placeholder="Nova Senha" required>
-        </div>
+        <input type="text" id="reg-user" placeholder="Novo Usuário" required autocomplete="off">
+        <input type="password" id="reg-pass" placeholder="Nova Senha" required>
         <button type="submit" class="btn-primary">Criar Conta</button>
       </form>
 
@@ -42,7 +34,7 @@
     </div>
   </div>
 
-  <!-- TELA DO DASHBOARD / CHAT -->
+  <!-- Tela do Dashboard / Chat -->
   <div id="app-screen" class="app-layout" style="display: none;">
     <header class="app-header">
       <div class="logo">⚡ WebApp</div>
@@ -83,6 +75,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=200" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
