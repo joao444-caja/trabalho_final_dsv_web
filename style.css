@@ -2,16 +2,11 @@
   --bg-color: #0f172a;
   --card-bg: #1e293b;
   --primary: #38bdf8;
-  --primary-hover: #0284c7;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
@@ -23,77 +18,35 @@ body {
   min-height: 100vh;
 }
 
-.welcome-container {
-  width: 100%;
-  max-width: 450px;
-  padding: 1rem;
-}
+.welcome-container { width: 100%; max-width: 450px; padding: 1rem; }
 
 .card {
   background-color: var(--card-bg);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  text-align: center;
 }
 
-/* Navegação */
-.navbar {
-  position: absolute;
-  top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
+.navbar { position: absolute; top: 1rem; display: flex; gap: 1rem; }
+.nav-link { color: var(--text-muted); text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; }
+.nav-link.active { color: var(--text-main); background-color: var(--card-bg); }
 
-.nav-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: all 0.2s;
-}
+.chat-card { display: flex; flex-direction: column; height: 500px; }
+.chat-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 0.75rem; margin-bottom: 1rem; }
+.status { color: #22c55e; font-size: 0.8rem; }
 
-.nav-link:hover, .nav-link.active {
-  color: var(--text-main);
-  background-color: var(--card-bg);
-}
-
-/* Estrutura do Chat */
-.chat-card {
-  width: 100%;
-  max-width: 450px;
-  display: flex;
-  flex-direction: column;
-  height: 520px;
-}
-
-.chat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #334155;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.status {
-  color: #22c55e;
-  font-size: 0.8rem;
-}
-
-/* Container de Mensagens */
+/* Container flexível das mensagens */
 #chat-box {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   gap: 10px;
-  padding: 10px 5px;
+  padding: 10px;
   overflow-y: auto;
   margin-bottom: 1rem;
 }
 
-/* Balões de Mensagem */
+/* Balão genérico */
 .message {
   max-width: 75%;
   padding: 10px 14px;
@@ -101,10 +54,9 @@ body {
   font-size: 0.9rem;
   line-height: 1.4;
   word-wrap: break-word;
-  text-align: left;
 }
 
-/* Mensagem Enviada (Sua) - Lado DIREITO */
+/* Sua Mensagem -> DIREITA (Azul estilo Instagram) */
 .message.sent {
   align-self: flex-end !important;
   background-color: #0084ff !important;
@@ -112,52 +64,17 @@ body {
   border-bottom-right-radius: 2px !important;
 }
 
-/* Mensagem Recebida (Outro Usuário) - Lado ESQUERDO */
+/* Mensagem de Outro Usuário -> ESQUERDA (Cinza escuro) */
 .message.received {
   align-self: flex-start !important;
   background-color: #334155 !important;
-  color: var(--text-main) !important;
+  color: #ffffff !important;
   border-bottom-left-radius: 2px !important;
 }
 
-/* Nome do Remetente */
-.sender-name {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: var(--primary);
-  margin-bottom: 2px;
-}
+.sender-name { display: block; font-size: 0.75rem; font-weight: bold; color: var(--primary); margin-bottom: 2px; }
 
-/* Formulário de Envio */
-#chat-form {
-  display: flex;
-  gap: 0.5rem;
-}
-
-#chat-form input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #334155;
-  background-color: #0f172a;
-  color: var(--text-main);
-  font-size: 1rem;
-  outline: none;
-}
-
-#chat-form button {
-  padding: 0.75rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--primary);
-  color: #0f172a;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.logout-btn { 
-  background: transparent; 
-  color: #f87171; 
-  border: 1px solid #f87171; 
-}
+#chat-form { display: flex; gap: 0.5rem; }
+#chat-form input { flex: 1; padding: 0.75rem 1rem; border-radius: 6px; border: 1px solid #334155; background-color: #0f172a; color: var(--text-main); }
+#chat-form button { padding: 0.75rem 1.2rem; border: none; border-radius: 6px; background-color: var(--primary); color: #0f172a; font-weight: 600; cursor: pointer; }
+.logout-btn { background: transparent; color: #f87171; border: 1px solid #f87171; }
