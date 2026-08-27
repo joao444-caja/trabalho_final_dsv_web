@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const currentUser = localStorage.getItem('logged_user');
-  const API_URL = 'http://localhost:3000/api';
+  const API_URL = 'https://trabalho-backend-9s6a.onrender.com/api';
 
   // Guarda de Rotas
   if (!currentUser && currentPage !== 'login.html') {
