@@ -1,14 +1,50 @@
 const API_URL = 'https://trabalho-backend-9s6a.onrender.com/api';
 const currentUser = localStorage.getItem('chat_user');
 
-if (!currentUser && window.location.pathname.includes('chat.html')) {
+// Redireciona se não estiver logado
+if (!currentUser && (window.location.pathname.includes('chat.html') || window.location.pathname.includes('index.html'))) {
   window.location.href = 'login.html';
 }
 
 const chatBox = document.getElementById('chat-box');
 const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
+const userDisplay = document.getElementById('user-display');
+const avatarInitial = document.getElementById('avatar-initial');
+const profileNameText = document.getElementById('profile-name-text');
+const logoutBtn = document.getElementById('logout-btn');
+const clearChatBtn = document.getElementById('clear-chat-btn');
 
+// Atualiza informações do usuário na tela
+if (currentUser) {
+  if (userDisplay) userDisplay.textContent = currentUser;
+  if (profileNameText) profileNameText.textContent = currentUser;
+  if (avatarInitial) avatarInitial.textContent = currentUser.charAt(0).toUpperCase();
+}
+
+// Botão Sair
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('chat_user');
+    window.location.href = 'login.html';
+  });
+}
+
+// Botão Limpar Chat
+if (clearChatBtn) {
+  clearChatBtn.addEventListener('click', async () => {
+    if (confirm('Tem certeza que deseja apagar todo o histórico de mensagens?')) {
+      try {
+        await fetch(`${API_URL}/messages`, { method: 'DELETE' });
+        await loadMessages();
+      } catch (err) {
+        alert('Erro ao apagar histórico.');
+      }
+    }
+  });
+}
+
+// Busca mensagens
 async function loadMessages() {
   if (!chatBox) return;
 
@@ -16,13 +52,12 @@ async function loadMessages() {
     const res = await fetch(`${API_URL}/messages`);
     const messages = await res.json();
 
-    chatBox.innerHTML = ''; 
+    chatBox.innerHTML = '';
 
     messages.forEach(msg => {
       const msgDiv = document.createElement('div');
       const isMe = msg.username === currentUser;
 
-      // Se for meu usuário -> sent (Direita). Se for outro -> received (Esquerda)
       msgDiv.className = `message ${isMe ? 'sent' : 'received'}`;
       
       const senderHtml = isMe ? '' : `<small class="sender-name">${msg.username}</small>`;
@@ -37,6 +72,7 @@ async function loadMessages() {
   }
 }
 
+// Envia mensagem
 if (chatForm) {
   chatForm.addEventListener('submit', async (e) => {
     e.preventDefault();
